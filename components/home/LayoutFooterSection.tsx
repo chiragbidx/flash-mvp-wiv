@@ -10,38 +10,32 @@ export const LayoutFooterSection = () => {
           <div className="col-span-full xl:col-span-2">
             <Link href="#" className="flex font-bold items-center">
               <ChevronsDownIcon className="w-9 h-9 mr-2 bg-gradient-to-tr from-primary via-primary/70 to-primary rounded-lg border border-secondary" />
-
-              <h3 className="text-2xl">Panda</h3>
+              <h3 className="text-2xl">Marketiq</h3>
             </Link>
           </div>
-
           <div className="flex flex-col gap-2">
             <h3 className="font-bold text-lg">Contact</h3>
             <div>
-              <Link href="mailto:hello@panda.dev" className="opacity-60 hover:opacity-100">
-                hello@panda.dev
+              <Link href="mailto:hi@chirag.co" className="opacity-60 hover:opacity-100">
+                hi@chirag.co
               </Link>
             </div>
-
             <div>
-              <Link href="#" className="opacity-60 hover:opacity-100">
+              <a href="https://github.com/chiragd" className="opacity-60 hover:opacity-100" target="_blank" rel="noopener noreferrer">
                 Github
-              </Link>
+              </a>
             </div>
-
             <div>
-              <Link href="https://x.com" className="opacity-60 hover:opacity-100">
-                Twitter
-              </Link>
+              <a href="https://x.com/chiragdodiya" className="opacity-60 hover:opacity-100" target="_blank" rel="noopener noreferrer">
+                X (Twitter)
+              </a>
             </div>
-
             <div>
-              <Link href="https://discord.com" className="opacity-60 hover:opacity-100">
-                Discord
-              </Link>
+              <a href="https://linkedin.com/in/chiragdodiya" className="opacity-60 hover:opacity-100" target="_blank" rel="noopener noreferrer">
+                LinkedIn
+              </a>
             </div>
           </div>
-
           <div className="flex flex-col gap-2">
             <h3 className="font-bold text-lg">Product</h3>
             <div>
@@ -49,20 +43,17 @@ export const LayoutFooterSection = () => {
                 Features
               </Link>
             </div>
-
             <div>
-              <Link href="#pricing" className="opacity-60 hover:opacity-100">
-                Pricing
+              <Link href="#ai-agent-demo" className="opacity-60 hover:opacity-100">
+                AI Campaign Agent
               </Link>
             </div>
-
             <div>
               <Link href="#contact" className="opacity-60 hover:opacity-100">
                 Contact
               </Link>
             </div>
           </div>
-
           <div className="flex flex-col gap-2">
             <h3 className="font-bold text-lg">Help</h3>
             <div>
@@ -70,46 +61,45 @@ export const LayoutFooterSection = () => {
                 Contact Us
               </Link>
             </div>
-
             <div>
               <Link href="#faq" className="opacity-60 hover:opacity-100">
                 FAQ
               </Link>
             </div>
-
             <div>
               <Link href="https://nextjs.org/docs" className="opacity-60 hover:opacity-100">
                 Docs
               </Link>
             </div>
           </div>
-
           <div className="flex flex-col gap-2">
             <h3 className="font-bold text-lg">Socials</h3>
             <div>
-              <Link href="https://github.com" className="opacity-60 hover:opacity-100">
+              <a href="https://github.com/chiragd" className="opacity-60 hover:opacity-100" target="_blank" rel="noopener noreferrer">
                 GitHub
-              </Link>
+              </a>
             </div>
-
             <div>
-              <Link href="https://discord.com" className="opacity-60 hover:opacity-100">
-                Discord
-              </Link>
+              <a href="https://linkedin.com/in/chiragdodiya" className="opacity-60 hover:opacity-100" target="_blank" rel="noopener noreferrer">
+                LinkedIn
+              </a>
             </div>
-
             <div>
-              <Link href="https://x.com" className="opacity-60 hover:opacity-100">
-                X
-              </Link>
+              <a href="https://x.com/chiragdodiya" className="opacity-60 hover:opacity-100" target="_blank" rel="noopener noreferrer">
+                X (Twitter)
+              </a>
+            </div>
+            <div>
+              <a href="mailto:hi@chirag.co" className="opacity-60 hover:opacity-100">
+                Email
+              </a>
             </div>
           </div>
         </div>
-
         <Separator className="my-6" />
         <section className="">
           <h3 className="">
-            &copy; 2026 Panda SaaS App Builder Starter.
+            &copy; {new Date().getFullYear()} Marketiq — The Marketing Agent Portal.
             <Link
               target="_blank"
               href="https://nextjs.org"
