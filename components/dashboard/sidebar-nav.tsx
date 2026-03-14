@@ -9,6 +9,11 @@ import {
   Settings,
   Users,
   CreditCard,
+  Briefcase,
+  PieChart,
+  Folder,
+  Bot,
+  MessageCircle,
 } from "lucide-react";
 import {
   Collapsible,
@@ -25,15 +30,21 @@ type NavItem = {
 
 const sections: { title: string; items: NavItem[] }[] = [
   {
-    title: "Platform",
+    title: "Workspace",
     items: [
       { label: "Overview", href: "/dashboard", icon: Home },
+      { label: "Clients", href: "/dashboard/clients", icon: Briefcase },
+      { label: "Campaigns", href: "/dashboard/campaigns", icon: PieChart },
+      { label: "Assets", href: "/dashboard/assets", icon: Folder },
+      { label: "AI Agents", href: "/dashboard/agents", icon: Bot },
+      { label: "Analytics", href: "/dashboard/analytics", icon: PieChart },
     ],
   },
   {
     title: "Account",
     items: [
       { label: "Team", href: "/dashboard/team", icon: Users },
+      { label: "Communication", href: "/dashboard/communication", icon: MessageCircle, disabled: true },
       { label: "Billing", href: "#", icon: CreditCard, disabled: true },
       { label: "Settings", href: "/dashboard/settings", icon: Settings },
     ],
