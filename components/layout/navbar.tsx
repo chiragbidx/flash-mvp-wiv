@@ -35,12 +35,12 @@ interface FeatureProps {
 
 const routeList: RouteProps[] = [
   {
-    href: "/#testimonials",
-    label: "Testimonials",
+    href: "/#ai-agent-demo",
+    label: "AI Agent Demo",
   },
   {
     href: "/#team",
-    label: "Team",
+    label: "Founder",
   },
   {
     href: "/#contact",
@@ -54,16 +54,16 @@ const routeList: RouteProps[] = [
 
 const featureList: FeatureProps[] = [
   {
-    title: "Auth, Billing, Teams",
-    description: "Production-ready flows for sign-in, subscriptions, and organizations.",
+    title: "Multi-Client Management",
+    description: "Handle campaigns, content, and analytics for all your clients in one place.",
   },
   {
-    title: "UI + Design System",
-    description: "Shadcn-based components with consistent theming and dark mode support.",
+    title: "AI Marketing Agents",
+    description: "Automate ideation, copywriting, insights & workflow with OpenAI-powered assistants.",
   },
   {
-    title: "Deploy Fast",
-    description: "Sane defaults for Next.js, TypeScript, and Vercel-first deployment.",
+    title: "Reporting & Analytics",
+    description: "Real-time dashboards, client-ready reports, and actionable insights for agencies.",
   },
 ];
 
@@ -73,7 +73,7 @@ export const Navbar = () => {
     <header className="shadow-inner bg-opacity-15 w-[90%] md:w-[70%] lg:w-[75%] lg:max-w-screen-xl top-5 mx-auto sticky border border-secondary z-40 rounded-2xl flex justify-between items-center p-2 bg-card">
       <Link href="/" className="font-bold text-lg flex items-center">
         <ChevronsDown className="bg-gradient-to-tr border-secondary from-primary via-primary/70 to-primary rounded-lg w-9 h-9 mr-2 border text-white" />
-        Panda
+        Marketiq
       </Link>
       {/* <!-- Mobile --> */}
       <div className="flex items-center lg:hidden">
@@ -94,7 +94,7 @@ export const Navbar = () => {
                 <SheetTitle className="flex items-center">
                   <Link href="/" className="flex items-center">
                     <ChevronsDown className="bg-gradient-to-tr border-secondary from-primary via-primary/70 to-primary rounded-lg w-9 h-9 mr-2 border text-white" />
-                    Panda
+                    Marketiq
                   </Link>
                 </SheetTitle>
               </SheetHeader>
@@ -148,8 +148,8 @@ export const Navbar = () => {
             <NavigationMenuContent>
               <div className="grid w-[600px] grid-cols-2 gap-5 p-4">
                 <Image
-                  src="/demo-img.jpg"
-                  alt="Panda preview"
+                  src="/hero-image-light.jpeg"
+                  alt="Marketiq marketing portal preview"
                   className="h-full w-full rounded-md object-cover"
                   width={600}
                   height={600}
@@ -197,7 +197,7 @@ export const Navbar = () => {
         <Button asChild size="sm" variant="ghost" aria-label="View on GitHub">
           <Link
             aria-label="View on GitHub"
-            href="https://nextjs.org/docs"
+            href="https://github.com/chiragd"
             target="_blank"
           >
             <Github className="size-5" />
