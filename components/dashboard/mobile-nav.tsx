@@ -1,16 +1,8 @@
 "use client";
 
+import { useState } from "react";
+import Sidebar from "./Sidebar";
 import { Menu } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import {
-  Sheet,
-  SheetContent,
-  SheetTrigger,
-  SheetTitle,
-} from "@/components/ui/sheet";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Separator } from "@/components/ui/separator";
-import { SidebarNav } from "@/components/dashboard/sidebar-nav";
 
 type MobileNavProps = {
   fullName: string;
@@ -19,46 +11,37 @@ type MobileNavProps = {
 };
 
 export function MobileNav({ fullName, email, initials }: MobileNavProps) {
+  const [open, setOpen] = useState(false);
+
   return (
-    <Sheet>
-      <SheetTrigger asChild>
-        <Button variant="ghost" size="icon" className="md:hidden">
-          <Menu className="size-5" />
-          <span className="sr-only">Toggle menu</span>
-        </Button>
-      </SheetTrigger>
-      <SheetContent side="left" className="w-[280px] p-0">
-        <SheetTitle className="sr-only">Navigation menu</SheetTitle>
-        <div className="flex h-full flex-col">
-          <div className="p-5 pb-0">
-            <div className="flex items-center gap-2.5">
-              <div className="grid size-8 place-items-center rounded-lg bg-foreground text-background text-sm font-bold">
-                P
+    <>
+      <button
+        className="md:hidden p-2 rounded hover:bg-accent border"
+        aria-label="Toggle menu"
+        onClick={() => setOpen(v => !v)}
+      >
+        <Menu className="h-5 w-5" />
+      </button>
+      {open && (
+        <div className="fixed inset-0 z-50 bg-black/40 flex md:hidden" onClick={() => setOpen(false)}>
+          <div className="w-64 bg-white h-full shadow-lg" onClick={e => e.stopPropagation()}>
+            <div className="p-4 border-b flex items-center gap-2">
+              <span className="bg-primary text-background rounded-full w-8 h-8 flex items-center justify-center font-bold">
+                {initials}
+              </span>
+              <div>
+                <div className="font-semibold">{fullName}</div>
+                <div className="text-xs text-muted-foreground">{email}</div>
               </div>
-              <span className="font-semibold tracking-tight">Panda Admin</span>
             </div>
-          </div>
-
-          <div className="my-4" />
-
-          <div className="flex-1 overflow-y-auto px-3">
-            <SidebarNav />
-          </div>
-
-          <Separator />
-          <div className="p-4">
-            <div className="flex items-center gap-3">
-              <Avatar className="size-8 border">
-                <AvatarFallback className="text-xs font-medium">{initials}</AvatarFallback>
-              </Avatar>
-              <div className="min-w-0 flex-1">
-                <p className="truncate text-sm font-medium leading-none">{fullName}</p>
-                <p className="truncate text-xs text-muted-foreground mt-1">{email}</p>
-              </div>
+            <div className="p-4">
+              <Sidebar />
             </div>
           </div>
         </div>
-      </SheetContent>
-    </Sheet>
+      )}
+    </>
   );
 }
+
+export default MobileNav;
