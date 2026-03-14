@@ -1,4 +1,4 @@
-import { pgTable, text, timestamp, uniqueIndex } from "drizzle-orm/pg-core";
+import { pgTable, text, timestamp, uniqueIndex, integer } from "drizzle-orm/pg-core";
 import { sql } from "drizzle-orm";
 
 export const users = pgTable("users", {
@@ -76,3 +76,52 @@ export const teamInvitations = pgTable("team_invitations", {
     .notNull()
     .defaultNow(),
 });
+
+export const clients = pgTable(
+  "clients",
+  {
+    id: text("id").primaryKey().notNull().default(sql`gen_random_uuid()`),
+    teamId: text("team_id").notNull().references(() => teams.id, { onDelete: "cascade" }),
+    name: text("name").notNull(),
+    contactName: text("contact_name"),
+    contactEmail: text("contact_email"),
+    notes: text("notes"),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (table) => [uniqueIndex("clients_team_name_idx").on(table.teamId, table.name)]
+);
+
+export const campaigns = pgTable(
+  "campaigns",
+  {
+    id: text("id").primaryKey().notNull().default(sql`gen_random_uuid()`),
+    teamId: text("team_id").notNull().references(() => teams.id, { onDelete: "cascade" }),
+    clientId: text("client_id").notNull().references(() => clients.id, { onDelete: "cascade" }),
+    name: text("name").notNull(),
+    status: text("status").notNull().default("planned"), // planned, active, completed, paused
+    startDate: timestamp("start_date", { withTimezone: true }),
+    endDate: timestamp("end_date", { withTimezone: true }),
+    description: text("description"),
+    createdBy: text("created_by").notNull().references(() => users.id, { onDelete: "set null" }),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (table) => [uniqueIndex("campaigns_team_client_name_idx").on(table.teamId, table.clientId, table.name)]
+);
+
+export const assets = pgTable(
+  "assets",
+  {
+    id: text("id").primaryKey().notNull().default(sql`gen_random_uuid()`),
+    teamId: text("team_id").notNull().references(() => teams.id, { onDelete: "cascade" }),
+    clientId: text("client_id").references(() => clients.id, { onDelete: "set null" }),
+    campaignId: text("campaign_id").references(() => campaigns.id, { onDelete: "set null" }),
+    name: text("name").notNull(),
+    fileUrl: text("file_url").notNull(),
+    fileType: text("file_type"),
+    uploadedBy: text("uploaded_by").notNull().references(() => users.id, { onDelete: "set null" }),
+    uploadedAt: timestamp("uploaded_at", { withTimezone: true }).notNull().defaultNow(),
+    notes: text("notes"),
+  }
+);
