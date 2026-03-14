@@ -6,6 +6,7 @@ import { getAuthSession } from "@/lib/auth/session";
 import { db } from "@/lib/db/client";
 import { users } from "@/lib/db/schema";
 
+// New: Marketiq dashboard cards can be composed here, or delegate to DashboardContent.
 function getGreeting(): string {
   const hour = new Date().getHours();
   if (hour < 12) return "Good morning";
@@ -25,10 +26,12 @@ export default async function DashboardPage() {
 
   const firstName = user?.firstName || "there";
 
+  // Optionally, pass marketiqWidgets: true to DashboardContent
   return (
     <DashboardContent
       greeting={getGreeting()}
       firstName={firstName}
+      marketiqWidgets={true}
     />
   );
 }
