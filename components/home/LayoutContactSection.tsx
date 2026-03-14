@@ -43,17 +43,16 @@ export const LayoutContactSection = () => {
       firstName: "",
       lastName: "",
       email: "",
-      subject: "Starter Demo",
+      subject: "Demo Inquiry",
       message: "",
     },
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     const { firstName, lastName, email, subject, message } = values;
-    console.log(values);
-
-    const mailToLink = `mailto:hello@panda.dev?subject=${subject}&body=Hello, I am ${firstName} ${lastName}. My email is ${email}. %0D%0A${message}`;
-
+    const mailToLink = `mailto:hi@chirag.co?subject=${encodeURIComponent(subject)}&body=Hello, I am ${firstName} ${lastName}. My email is ${email}. %0D%0A${encodeURIComponent(
+      message
+    )}`;
     window.location.assign(mailToLink);
   }
 
@@ -65,65 +64,52 @@ export const LayoutContactSection = () => {
             <h2 className="text-lg text-primary mb-2 tracking-wider">
               Contact
             </h2>
-
-            <h2 className="text-3xl md:text-4xl font-bold">Talk to the Panda team</h2>
+            <h2 className="text-3xl md:text-4xl font-bold">
+              Connect with the Marketiq team
+            </h2>
           </div>
           <p className="mb-8 text-muted-foreground lg:w-5/6">
-            Need help customizing the starter, planning architecture, or
-            accelerating launch? Share your goals and timeline.
+            Interested in a demo, partnership, or custom-built agency solution?
+            Reach out and we’ll respond directly. For urgent queries, contact Chirag Dodiya (owner) at <a href="mailto:hi@chirag.co" className="underline">hi@chirag.co</a>.
           </p>
-
           <div className="flex flex-col gap-4">
             <div>
               <div className="flex gap-2 mb-1">
                 <Building2 />
-                <div className="font-bold">Find us</div>
+                <div className="font-bold">Location</div>
               </div>
-
-              <div>Remote-first • San Francisco, CA</div>
+              <div>Remote-first • Worldwide</div>
             </div>
-
-            <div>
-              <div className="flex gap-2 mb-1">
-                <Phone />
-                <div className="font-bold">Call us</div>
-              </div>
-
-              <div>+1 (415) 555-0199</div>
-            </div>
-
             <div>
               <div className="flex gap-2 mb-1">
                 <Mail />
-                <div className="font-bold">Email us</div>
+                <div className="font-bold">Contact Email</div>
               </div>
-
-              <div>hello@panda.dev</div>
+              <div>hi@chirag.co</div>
             </div>
-
             <div>
               <div className="flex gap-2">
                 <Clock />
-                <div className="font-bold">Visit us</div>
+                <div className="font-bold">Availability</div>
               </div>
-
               <div>
                 <div>Monday - Friday</div>
-                <div>9AM - 6PM PT</div>
+                <div>9AM - 6PM</div>
               </div>
             </div>
           </div>
         </div>
-
         <Card className="bg-muted/60 dark:bg-card">
-          <CardHeader className="text-primary text-2xl"> </CardHeader>
+          <CardHeader className="text-primary text-2xl">
+            Send us a message
+          </CardHeader>
           <CardContent>
             <Form {...form}>
               <form
                 onSubmit={form.handleSubmit(onSubmit)}
                 className="grid w-full gap-4"
               >
-                <div className="flex flex-col md:!flex-row gap-8">
+                <div className="flex flex-col md:flex-row gap-8">
                   <FormField
                     control={form.control}
                     name="firstName"
@@ -131,7 +117,7 @@ export const LayoutContactSection = () => {
                       <FormItem className="w-full">
                         <FormLabel>First Name</FormLabel>
                         <FormControl>
-                          <Input placeholder="Leopoldo" {...field} />
+                          <Input placeholder="Chirag" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -144,14 +130,13 @@ export const LayoutContactSection = () => {
                       <FormItem className="w-full">
                         <FormLabel>Last Name</FormLabel>
                         <FormControl>
-                          <Input placeholder="Miranda" {...field} />
+                          <Input placeholder="Dodiya" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
                   />
                 </div>
-
                 <div className="flex flex-col gap-1.5">
                   <FormField
                     control={form.control}
@@ -171,7 +156,6 @@ export const LayoutContactSection = () => {
                     )}
                   />
                 </div>
-
                 <div className="flex flex-col gap-1.5">
                   <FormField
                     control={form.control}
@@ -189,19 +173,16 @@ export const LayoutContactSection = () => {
                             </SelectTrigger>
                           </FormControl>
                           <SelectContent>
-                            <SelectItem value="Starter Demo">
-                              Starter Demo
+                            <SelectItem value="Demo Inquiry">
+                              Demo Inquiry
                             </SelectItem>
-                            <SelectItem value="Architecture Review">
-                              Architecture Review
+                            <SelectItem value="Partnership">
+                              Partnership
                             </SelectItem>
-                            <SelectItem value="Design System">
-                              Design System
+                            <SelectItem value="Custom Solution">
+                              Custom Solution
                             </SelectItem>
-                            <SelectItem value="Billing Integration">Billing Integration</SelectItem>
-                            <SelectItem value="Enterprise Plan">
-                              Enterprise Plan
-                            </SelectItem>
+                            <SelectItem value="Other">Other</SelectItem>
                           </SelectContent>
                         </Select>
                         <FormMessage />
@@ -209,7 +190,6 @@ export const LayoutContactSection = () => {
                     )}
                   />
                 </div>
-
                 <div className="flex flex-col gap-1.5">
                   <FormField
                     control={form.control}
@@ -220,23 +200,20 @@ export const LayoutContactSection = () => {
                         <FormControl>
                           <Textarea
                             rows={5}
-                            placeholder="Tell us about your SaaS idea, stage, and timeline..."
+                            placeholder="Share your needs, agency size, and any campaign details..."
                             className="resize-none"
                             {...field}
                           />
                         </FormControl>
-
                         <FormMessage />
                       </FormItem>
                     )}
                   />
                 </div>
-
                 <Button className="mt-4">Send inquiry</Button>
               </form>
             </Form>
           </CardContent>
-
           <CardFooter></CardFooter>
         </Card>
       </section>
