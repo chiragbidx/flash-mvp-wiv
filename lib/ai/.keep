@@ -1,0 +1,2 @@
+// Empty file to ensure 'lib/ai' directory exists in repo.
+// (No content needed. This enables AI-powered utility imports like campaignAgent.ts.)
